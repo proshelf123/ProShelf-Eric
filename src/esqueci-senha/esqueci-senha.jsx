@@ -97,27 +97,48 @@ function EsqueciSenha() {
                         />
                     </div>
 
-                    {status.mensagem && (
-                        <p style={{
-                            color: status.tipo === 'sucesso' ? '#4CAF50' : '#e53935',
-                            fontSize: '14px',
-                            textAlign: 'center',
-                            maxWidth: '320px',
-                            fontWeight: '500'
-                        }}>
-                            {status.mensagem}
-                        </p>
-                    )}
+    {status.tipo === 'sucesso' && (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+        <svg width="80" height="80" viewBox="0 0 100 100" style={{ overflow: 'visible' }}>
+            <style>{`
+                .circle-bg { fill: none; stroke: #6F3B9D; stroke-width: 3; opacity: 0.15; }
+                .circle-progress {
+                    fill: none; stroke: #6F3B9D; stroke-width: 3; stroke-linecap: round;
+                    stroke-dasharray: 251; stroke-dashoffset: 251;
+                    transform: rotate(-90deg); transform-origin: 50px 50px;
+                    animation: drawCircle 0.6s cubic-bezier(0.4,0,0.2,1) 0.1s forwards;
+                }
+                .checkmark {
+                    fill: none; stroke: #6F3B9D; stroke-width: 4;
+                    stroke-linecap: round; stroke-linejoin: round;
+                    stroke-dasharray: 60; stroke-dashoffset: 60;
+                    animation: drawCheck 0.4s cubic-bezier(0.4,0,0.2,1) 0.75s forwards;
+                }
+                .pulse-ring {
+                    fill: none; stroke: #6F3B9D; stroke-width: 2; opacity: 0;
+                    transform-origin: 50px 50px;
+                    animation: pulseOut 1s ease-out 1.1s forwards;
+                }
+                @keyframes drawCircle { to { stroke-dashoffset: 0; } }
+                @keyframes drawCheck  { to { stroke-dashoffset: 0; } }
+                @keyframes pulseOut   { 0% { opacity: 0.5; r: 42px; } 100% { opacity: 0; r: 62px; } }
+            `}</style>
+            <circle className="circle-bg"       cx="50" cy="50" r="40"/>
+            <circle className="pulse-ring"      cx="50" cy="50" r="42"/>
+            <circle className="circle-progress" cx="50" cy="50" r="40"/>
+            <polyline className="checkmark" points="30,52 44,66 70,36"/>
+        </svg>
+        <p style={{ color: '#4CAF50', fontSize: '14px', fontWeight: '500', textAlign: 'center' }}>
+            {status.mensagem}
+        </p>
+    </div>
+)}
 
-                    <button
-                        className='btn-entrar'
-                        onClick={handleRecuperarSenha}
-                        disabled={carregando}
-                        style={{ opacity: carregando ? 0.7 : 1, cursor: carregando ? 'not-allowed' : 'pointer' }}
-                    >
-                        {carregando ? 'Enviando...' : 'Recuperar senha'}
-                        {!carregando && <span className="arrow">›</span>}
-                    </button>
+{status.tipo === 'erro' && (
+    <p style={{ color: '#e53935', fontSize: '14px', fontWeight: '500', textAlign: 'center' }}>
+        {status.mensagem}
+    </p>
+)}
 
                     <p>
                         Voltar para o{' '}
