@@ -64,7 +64,7 @@ function Inicio() {
         transition={{ duration: 0.2, ease: "easeOut" }}
         style={{ cursor: "pointer" }}
     >
-        <motion.a
+       <Link to="/cadastrar-escola">  <motion.a
             href="#"
             variants={container}
             initial="hidden"
@@ -82,7 +82,7 @@ function Inicio() {
                     {char === " " ? "\u00A0" : char}
                 </motion.span>
             ))}
-        </motion.a>
+        </motion.a> </Link>
 
         <motion.div
             initial={{ opacity: 0, x: -10, scale: 0.8 }}
