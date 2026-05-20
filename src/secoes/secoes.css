@@ -1,0 +1,237 @@
+/* src/secoes/secoes.css */
+
+/* ── Dia seletor (Cronogramas) ── */
+.dia-seletor {
+  display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap;
+}
+.dia-btn {
+  padding: 5px 13px; border-radius: 20px;
+  border: 1px solid var(--borda); background: none;
+  font-size: 12px; font-family: 'Poppins', sans-serif;
+  cursor: pointer; color: var(--texto-sec); transition: all .15s;
+}
+.dia-btn:hover { border-color: var(--roxo); color: var(--roxo); }
+.dia-btn.ativo { background: var(--roxo); color: #fff; border-color: var(--roxo); }
+
+/* ── Aula linha (Cronogramas) ── */
+.aula-linha {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 8px;
+  margin-bottom: 6px; background: var(--bg);
+}
+.aula-num { font-size: 11px; color: var(--texto-sec); min-width: 48px; }
+.aula-disc {
+  font-size: 12px; font-weight: 500;
+  padding: 3px 12px; border-radius: 20px;
+}
+.aula-turma { font-size: 12px; color: var(--texto-sec); margin-left: auto; }
+.aula-sala { font-size: 11px; color: #bbb; min-width: 56px; text-align: right; }
+
+/* ── Turmas ── */
+.turma-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.turma-tab {
+  padding: 5px 16px; border-radius: 20px;
+  border: 1px solid var(--borda); background: none;
+  font-size: 12px; font-family: 'Poppins', sans-serif;
+  cursor: pointer; color: var(--texto-sec); transition: all .15s;
+}
+.turma-tab:hover { border-color: #6F3B9D; color: #6F3B9D; }
+
+.turma-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; border-radius: 8px; border: none;
+  cursor: pointer; transition: opacity .15s; font-family: 'Poppins', sans-serif;
+  font-size: 13px; font-weight: 500;
+}
+.turma-item:hover { opacity: 0.8; }
+
+/* ── Registros ── */
+.registro-item {
+  border-left: 3px solid var(--roxo); padding: 10px 14px;
+  border-radius: 0 8px 8px 0; background: var(--bg);
+  margin-bottom: 8px;
+}
+.registro-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.registro-data { font-size: 11px; color: var(--texto-sec); }
+.registro-badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+.registro-conteudo { font-size: 13px; font-weight: 500; color: var(--texto); margin: 0 0 3px; }
+.registro-desc { font-size: 12px; color: var(--texto-sec); margin: 0 0 3px; }
+.registro-info { font-size: 11px; color: #888; margin: 0; }
+
+.btn-voltar {
+  background: none; border: 1px solid var(--borda); border-radius: 8px;
+  padding: 5px 12px; font-size: 12px; font-family: 'Poppins', sans-serif;
+  color: var(--texto-sec); cursor: pointer; transition: all .15s;
+}
+.btn-voltar:hover { border-color: var(--roxo); color: var(--roxo); }
+
+/* ── Arquivos ── */
+.sec-titulo {
+  font-size: 11px; font-weight: 500; color: var(--texto-sec);
+  text-transform: uppercase; letter-spacing: .5px; margin: 12px 0 8px;
+}
+.arquivo-fixado {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 8px; background: var(--roxo);
+  margin-bottom: 6px;
+}
+.arquivo-nome-fixado { font-size: 12px; color: #fff; flex: 1; text-decoration: none; }
+.arquivo-normal {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 8px; background: var(--bg);
+  border: 0.5px solid var(--borda); margin-bottom: 6px;
+  transition: background .15s;
+}
+.arquivo-normal:hover { background: var(--roxo-claro); }
+.arquivo-nome { font-size: 12px; color: var(--texto); flex: 1; text-decoration: none; }
+.arquivo-acao {
+  background: none; border: none; cursor: pointer; font-size: 14px;
+  opacity: 0.5; transition: opacity .15s; padding: 2px 4px;
+}
+.arquivo-acao:hover { opacity: 1; }
+
+.btn-upload {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%; margin-top: 12px; padding: 10px;
+  border-radius: 8px; border: 1px dashed var(--roxo-medio);
+  background: none; color: var(--roxo); font-size: 13px;
+  font-family: 'Poppins', sans-serif; cursor: pointer; transition: background .15s;
+}
+.btn-upload:hover { background: var(--roxo-claro); }
+
+/* ── Calendário ── */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 12px;
+}
+
+/* Labels dos dias da semana */
+.cal-dia-label {
+  font-size: 10px;
+  color: var(--texto-sec);
+  text-align: center;
+  padding: 4px 0;
+  font-weight: 500;
+}
+
+/* Célula de cada dia — quadrada e centralizada */
+.cal-dia {
+  aspect-ratio: 1 / 1;          /* força célula quadrada */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 50%;            /* círculo perfeito */
+  cursor: pointer;
+  transition: background .15s;
+  position: relative;
+  line-height: 1;
+  user-select: none;
+}
+.cal-dia:hover:not(:empty) { background: var(--roxo-claro); }
+
+/* Dia atual */
+.cal-dia.hoje {
+  background: var(--roxo);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Dia selecionado */
+.cal-dia.selecionado {
+  background: #6F3B9D;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Ponto laranja embaixo dos dias com evento */
+.cal-dia.tem-evento::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--laranja);
+}
+.cal-dia.hoje.tem-evento::after,
+.cal-dia.selecionado.tem-evento::after { background: #fff; }
+
+.cal-nav {
+  background: none; border: none; cursor: pointer;
+  color: var(--roxo); font-size: 18px; padding: 4px 8px; border-radius: 6px;
+  transition: background .15s;
+}
+.cal-nav:hover { background: var(--roxo-claro); }
+
+.cal-evento {
+  display: flex; align-items: center; gap: 8px; padding: 7px 10px;
+  border-radius: 8px; background: var(--bg); border-left: 3px solid var(--roxo);
+  margin-bottom: 6px;
+}
+.cal-evento-data { font-size: 10px; color: var(--texto-sec); min-width: 36px; }
+.cal-evento-nome { font-size: 12px; color: var(--texto); flex: 1; }
+.cal-evento-badge {
+  font-size: 10px; padding: 2px 8px; border-radius: 10px;
+  font-weight: 500; white-space: nowrap;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(2px);
+}
+.modal {
+  background: #fff; border-radius: 16px;
+  width: 100%; max-width: 440px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(111,59,157,0.18);
+  display: flex; flex-direction: column; gap: 12px;
+  max-height: 90vh; overflow-y: auto;
+}
+.modal-titulo {
+  font-size: 15px; font-weight: 700; color: #1a1a1a;
+  margin: 0 0 4px 0;
+}
+
+/* ── Botões do modal ── */
+.perfil-salvar {
+  flex: 1; padding: 12px; border-radius: 10px;
+  border: none; background: var(--roxo); color: #fff;
+  font-size: 14px; font-family: 'Poppins', sans-serif;
+  font-weight: 500; cursor: pointer; transition: opacity .15s;
+}
+.perfil-salvar:hover { opacity: 0.85; }
+.perfil-salvar:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-cancelar {
+  flex: 1; padding: 12px; border-radius: 10px;
+  border: 1px solid var(--borda); background: none;
+  font-size: 14px; font-family: 'Poppins', sans-serif;
+  color: var(--texto-sec); cursor: pointer; transition: all .15s;
+}
+.btn-cancelar:hover { border-color: var(--roxo); color: var(--roxo); }
+
+/* ── Inputs do modal (perfil-grupo/label/input) ── */
+.perfil-grupo { display: flex; flex-direction: column; gap: 4px; }
+.perfil-label { font-size: 11px; font-weight: 500; color: var(--texto-sec); }
+.perfil-input {
+  padding: 9px 12px; border-radius: 8px;
+  border: 1px solid var(--borda); font-size: 13px;
+  font-family: 'Poppins', sans-serif; color: var(--texto);
+  outline: none; transition: border-color .15s; width: 100%;
+  box-sizing: border-box;
+}
+.perfil-input:focus { border-color: var(--roxo); }
+
+/* ── Vazio ── */
+.secao-vazia {
+  text-align: center; color: var(--texto-sec); font-size: 13px; padding: 24px 0;
+}

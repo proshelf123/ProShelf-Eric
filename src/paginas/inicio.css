@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --cor-roxa-normal: #6F3B9D;
+    --cor-roxa-escura: #331C48;
+    --cor-roxa-clara: #D7C6E6;
+
+    --cor-laranja-normal: #FF9D00;
+    --cor-cheddar: #F38100;
+    --cor-laranja-clara: #FFCC79;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+}
+
+
+#logo {
+    width: 220px;
+    height: 100px;
+    margin-left: 30px;
+    user-select: none;
+
+}
+
+#logo-mobile {
+    display: none;
+    position: absolute;
+    user-select: none;
+
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0 20px;
+    width: 100%;
+    height: 100px;
+    box-shadow: 0px 7px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+}
+
+#ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    flex-wrap: nowrap; 
+}
+
+#menu, #menu1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    font-size: 24px; 
+    white-space: nowrap; 
+}
+
+#porta-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    margin-left: 10px;
+    user-select: none;
+
+}
+
+#porta-icone-mobile {
+    display: none;
+    user-select: none;
+}
+
+.texto-mobile {
+    display: none;
+}
+
+.texto-desktop {
+    display: block;
+}
+
+.pagina {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 100px); 
+    overflow: clip;
+}
+
+.container-circulos {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.circulo-laranja {
+    width: 520px;
+    height: 520px;
+    background-color: var(--cor-cheddar);
+    border-radius: 50%;
+    position: absolute;
+    left: 550px;   /* em vez de margin-left: 500px */
+    top: 70px;
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.3);
+}
+
+.circulo-amarelo {
+    width: 610px;
+    height: 610px;
+    background-color: var(--cor-laranja-normal);
+    border-radius: 50%;
+    position: absolute;
+    left: 150px;
+    top: 230px;    /* sobrepõe o laranja por cima */
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.3);
+}
+
+.mariana {
+    position: absolute;
+    display: block;
+    bottom: -40px;
+    left: 150px;
+    max-height: 100%;
+    width: auto;
+    z-index: 2;
+    user-select: none;
+
+}
+
+.textos {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 3;
+}
+
+.texto-direita {
+    margin: 0;
+}
+
+#tamanho-fonte {
+    font-size: 68px;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+}
+
+#do-professor {
+    font-size: 68px;
+    font-weight: 500;
+    text-align: right;
+    margin: -20px 0 40px 0;
+}
+
+.botao-entrar {
+    overflow: visible;
+    padding: 22px 80px;
+    border-radius: 999px;
+    border: none;
+    background-color: var(--cor-roxa-normal);
+    color: #fff;
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+#inteligente {
+    color: var(--cor-roxa-normal);
+    display: inline-block; 
+    position: relative;
+}
+
+.com-barra {
+    position: relative;
+    display: inline-block;
+}
+
+.sem-barra {
+    position: relative;
+    display: inline-block;
+}
+
+.barra-animada {
+    position: absolute;
+    left: 0;
+    bottom: 12px;
+    width: 100%;
+    height: 6px;
+    background: #FF9D00;
+    transform-origin: left;
+    border-radius: 2px;
+    display: block;
+}
+
+@media screen and (max-width: 1024px) {
+
+    * {
+        margin-bottom: 0;
+    } 
+
+    .container-circulos {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.circulo-laranja {
+    width: 300px;
+    height: 300px;
+    background-color: var(--cor-cheddar);
+    border-radius: 50%;
+    position: absolute;
+    left: 250px;   /* em vez de margin-left: 500px */
+    top: 60px;
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.3);
+}
+
+.circulo-amarelo {
+    width: 400px;
+    height: 400px;
+    background-color: var(--cor-laranja-normal);
+    border-radius: 50%;
+    position: absolute;
+    left: 50px;
+    top: 160px;    /* sobrepõe o laranja por cima */
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.3);
+}
+
+.mariana {
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    width: 400px;
+    height: 650px;
+}
+ 
+#ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    flex-wrap: nowrap; 
+}
+
+#menu, #menu1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    font-size: 20px; 
+    white-space: nowrap; 
+}
+
+.textos {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 3;
+}
+
+.texto-direita {
+    margin: 0;
+}
+
+#tamanho-fonte {
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+}
+
+#do-professor {
+    font-size: 0px;
+    font-weight: 500;
+    text-align: right;
+    margin: -10px 0 40px 0;
+}
+
+.botao-entrar {
+    overflow: visible;
+    padding: 12px 60px;
+    border-radius: 999px;
+    border: none;
+    background-color: var(--cor-roxa-normal);
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+#inteligente {
+    color: var(--cor-roxa-normal);
+    display: inline-block; 
+    position: relative;
+}
+
+.com-barra {
+    position: relative;
+    display: inline-block;
+}
+
+.sem-barra {
+    position: relative;
+    display: inline-block;
+}
+
+.barra-animada {
+    position: absolute;
+    left: 0;
+    bottom: 9px;
+    width: 100%;
+    height: 3px;
+    background: #FF9D00;
+    transform-origin: left;
+    border-radius: 2px;
+    display: block;
+}
+
+
+}
+
+@media screen and (max-width: 1440px) {
+
+    * {
+        margin-bottom: 0;
+    }
+
+
+
+.container-circulos {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.circulo-laranja {
+    width: 400px;
+    height: 400px;
+    background-color: var(--cor-cheddar);
+    border-radius: 50%;
+    position: absolute;
+    left: 250px;   /* em vez de margin-left: 500px */
+    top: 60px;
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.3);
+}
+
+.circulo-amarelo {
+    width: 550px;
+    height: 550px;
+    background-color: var(--cor-laranja-normal);
+    border-radius: 50%;
+    position: absolute;
+    left: 50px;
+    top: 230px;    /* sobrepõe o laranja por cima */
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.3);
+}
+
+.mariana {
+    position: absolute;
+    top: 60px;
+    left: 40px;
+    width: 550px;
+    height: 750px;
+}
+ 
+#ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    flex-wrap: nowrap; 
+}
+
+#menu, #menu1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    font-size: 25px; 
+    white-space: nowrap; 
+}
+
+.textos {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 3;
+}
+
+.texto-direita {
+    margin: 0;
+}
+
+#tamanho-fonte {
+    font-size: 55px;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+}
+
+#do-professor {
+    font-size: 55px;
+    font-weight: 500;
+    text-align: right;
+    margin: -10px 0 40px 0;
+}
+
+.botao-entrar {
+    overflow: visible;
+    padding: 12px 80px;
+    border-radius: 999px;
+    border: none;
+    background-color: var(--cor-roxa-normal);
+    color: #fff;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+#inteligente {
+    color: var(--cor-roxa-normal);
+    display: inline-block; 
+    position: relative;
+}
+
+.com-barra {
+    position: relative;
+    display: inline-block;
+}
+
+.sem-barra {
+    position: relative;
+    display: inline-block;
+}
+
+.barra-animada {
+    position: absolute;
+    left: 0;
+    bottom: 9px;
+    width: 100%;
+    height: 5px;
+    background: #FF9D00;
+    transform-origin: left;
+    border-radius: 2px;
+    display: block;
+}
+
+
+}
