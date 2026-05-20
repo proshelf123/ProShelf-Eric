@@ -97,11 +97,11 @@ function EsqueciSenha() {
                         />
                     </div>
 
-    {status.tipo === 'sucesso' && (
+{status.tipo === 'sucesso' && (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
         <svg width="80" height="80" viewBox="0 0 100 100" style={{ overflow: 'visible' }}>
             <style>{`
-                .circle-bg { fill: none; stroke: #6F3B9D; stroke-width: 3; opacity: 0.15; }
+                .circle-bg { fill: none; stroke: #6F3B9D; stroke-width: 3; opacity: 0.15; margin-bottom: 30px;}
                 .circle-progress {
                     fill: none; stroke: #6F3B9D; stroke-width: 3; stroke-linecap: round;
                     stroke-dasharray: 251; stroke-dashoffset: 251;
@@ -139,6 +139,15 @@ function EsqueciSenha() {
         {status.mensagem}
     </p>
 )}
+                    <button
+                        className='btn-entrar'
+                        onClick={handleRecuperarSenha}
+                        disabled={carregando}
+                        style={{ opacity: carregando ? 0.7 : 1, cursor: carregando ? 'not-allowed' : 'pointer' }}
+                    >
+                        {carregando ? 'Enviando...' : 'Recuperar senha'}
+                        {!carregando && <span className="arrow">›</span>}
+                    </button>
 
                     <p>
                         Voltar para o{' '}
