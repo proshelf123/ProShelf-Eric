@@ -3,38 +3,53 @@ import React, { useState } from 'react';
 import LogoMetade from '../assets/Group 28.png'
 import LogoIcone from "../assets/Group 32 (2).png"
 import { auth } from "../firebase"; 
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from 'react-router';
+import { sendPasswordResetEmail } from "firebase/auth";
+import { Link, useNavigate } from 'react-router';
 
-function Login() {
+function EsqueciSenha() {
     const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const [status, setStatus] = useState({ tipo: '', mensagem: '' });
+    const [carregando, setCarregando] = useState(false);
+    const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
+    const handleRecuperarSenha = async (e) => {
+        e?.preventDefault();
+
+        if (!email.trim()) {
+            setStatus({ tipo: 'erro', mensagem: 'Por favor, insira seu e-mail.' });
+            return;
+        }
+
+        setCarregando(true);
+        setStatus({ tipo: '', mensagem: '' });
 
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, senha);
-            const user = userCredential.user;
-            console.log(user);
-            window.location.href = '/dashboard';
+            await sendPasswordResetEmail(auth, email);
+            setStatus({
+                tipo: 'sucesso',
+                mensagem: 'E-mail de redefinição enviado! Verifique sua caixa de entrada.'
+            });
+            setEmail('');
         } catch (error) {
             const errorCode = error.code;
-            console.error("Erro ao logar:", errorCode);
-            
-            if (errorCode === 'auth/invalid-credential') {
-                alert("E-mail ou senha incorretos.");
+            console.error("Erro ao enviar e-mail:", errorCode);
+
+            if (errorCode === 'auth/user-not-found' || errorCode === 'auth/invalid-email') {
+                setStatus({ tipo: 'erro', mensagem: 'E-mail não encontrado. Verifique e tente novamente.' });
+            } else if (errorCode === 'auth/too-many-requests') {
+                setStatus({ tipo: 'erro', mensagem: 'Muitas tentativas. Aguarde alguns minutos e tente novamente.' });
             } else {
-                alert("Ocorreu um erro ao tentar entrar. Tente novamente.");
+                setStatus({ tipo: 'erro', mensagem: 'Ocorreu um erro. Tente novamente.' });
             }
+        } finally {
+            setCarregando(false);
         }
     };
 
     return (
         <>
-            <div className='pagina-login' onKeyDown={(e) => e.key === 'Enter' && handleLogin()}>
+            <div className='pagina-login' onKeyDown={(e) => e.key === 'Enter' && handleRecuperarSenha()}>
                 <div className='lado-roxo'>
-                    <Link to='/' />
                     <img src={LogoMetade} className='icone-login' alt="Ícone de login" />
 
                     {[...Array(12)].map((_, i) => (
@@ -67,28 +82,51 @@ function Login() {
                 <div className='lado-branco'>
                     <img src={LogoIcone} className='logo-login' alt="Logo" />
                     <h2 id='acessar'>Redefinir senha</h2>
+                    <p style={{ color: '#888', fontSize: '14px', textAlign: 'center', maxWidth: '320px', marginTop: '-10px' }}>
+                        Insira seu e-mail e enviaremos um link para redefinir sua senha.
+                    </p>
 
                     <div className='campo'>
                         <label>E-mail</label>
-                        <input 
-                            type="email" 
-                            placeholder='Digite seu e-mail' 
+                        <input
+                            type="email"
+                            placeholder='Digite seu e-mail'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            disabled={carregando}
                         />
                     </div>
 
+                    {status.mensagem && (
+                        <p style={{
+                            color: status.tipo === 'sucesso' ? '#4CAF50' : '#e53935',
+                            fontSize: '14px',
+                            textAlign: 'center',
+                            maxWidth: '320px',
+                            fontWeight: '500'
+                        }}>
+                            {status.mensagem}
+                        </p>
+                    )}
 
-                    <button className='btn-entrar' onClick={handleLogin}>
-                        Recuperar senha
-                        <span className="arrow">›</span>
+                    <button
+                        className='btn-entrar'
+                        onClick={handleRecuperarSenha}
+                        disabled={carregando}
+                        style={{ opacity: carregando ? 0.7 : 1, cursor: carregando ? 'not-allowed' : 'pointer' }}
+                    >
+                        {carregando ? 'Enviando...' : 'Recuperar senha'}
+                        {!carregando && <span className="arrow">›</span>}
                     </button>
 
-                    <p>Voltar</p>
+                    <p>
+                        Voltar para o{' '}
+                        <Link to='/login' className='aqui'>Login</Link>
+                    </p>
                 </div>
             </div>
         </>
     );
 }
 
-export default Login;
+export default EsqueciSenha;
