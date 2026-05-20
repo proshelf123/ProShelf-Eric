@@ -9,7 +9,6 @@ import { auth } from '../firebase'
 import { buscarPerfil } from '../firebase/estrutura'
 import Logo from '../assets/Group 32 (2).png'
 import { CircleUserRound, UserRound, Settings, LogOut, Upload, Users } from 'lucide-react'
-import ProShelfChat from '../components/ProShelfChat'
 import Bemvindo from './Bem-vindo'
 import Cronogramas from '../secoes/Cronogramas'
 import Turmas from '../secoes/Turmas'
@@ -173,7 +172,7 @@ function Dashboard() {
               >
                 {professor?.nome && (
                   <div className='dropdown-nome'>
-                    {eCoordenador ? '👑 ' : ''}Prof. {professor.nome.split(' ')[0]}
+                    {eCoordenador ? ' ' : ''} Prof. {professor.nome.split(' ')[0]}
                   </div>
                 )}
                 <button
@@ -224,8 +223,6 @@ function Dashboard() {
         )}
       </AnimatePresence>
 
-      {/* ── Assistente IA ── */}
-      {uid && <ProShelfChat />}
     </div>
   )
 }
