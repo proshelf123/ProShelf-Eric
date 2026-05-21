@@ -64,7 +64,7 @@ function Inicio() {
         transition={{ duration: 0.2, ease: "easeOut" }}
         style={{ cursor: "pointer" }}
     >
-       <Link to="/cadastrar-escola">  <motion.a
+       <Link to="/cadastrar-escola" style={{textDecoration:"none",}}>  <motion.a
             href="#"
             variants={container}
             initial="hidden"

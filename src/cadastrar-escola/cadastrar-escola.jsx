@@ -1,4 +1,4 @@
-import '../esqueci-senha/esqueci-senha.css';
+import '../cadastrar-escola/cadastrar-escola.css'
 import React, { useState, useRef } from 'react';
 import LogoMetade from '../assets/Group 28.png';
 import LogoIcone from '../assets/Group 32 (2).png';
@@ -192,13 +192,13 @@ function CadastroEscola() {
                         <p style={{ color: '#888', fontSize: '13px', textAlign: 'center', maxWidth: '280px' }}>
                             Sua escola foi cadastrada e está em análise. Em breve entraremos em contato.
                         </p>
-                        <Link to='/login' className='btn-entrar' style={{ marginTop: '16px', textDecoration: 'none' }}>
+                        <Link to='/login' className='btn-cadastrar' style={{ marginTop: '16px', textDecoration: 'none' }}>
                             Ir para o login <span className="arrow">›</span>
                         </Link>
                     </div>
                 ) : (
                     <>
-                        <p style={{ color: '#888', fontSize: '13px', textAlign: 'center', maxWidth: '340px', marginTop: '-8px' }}>
+                        <p style={{ color: '#888', fontSize: '16px', textAlign: 'center', maxWidth: '340px', marginTop: '-8px' }}>
                             Preencha os dados abaixo para registrar sua instituição de ensino.
                         </p>
 
@@ -344,7 +344,7 @@ function CadastroEscola() {
                         )}
 
                         <button
-                            className='btn-entrar'
+                            className='btn-cadastrar'
                             onClick={handleCadastro}
                             disabled={carregando}
                             style={{

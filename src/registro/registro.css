@@ -1,0 +1,143 @@
+/* src/registro/registro.css */
+
+.pagina-registro {
+  min-height: 100vh;
+  background: #f8f7fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.registro-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 0.5px solid #e8e4f0;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 8px 32px rgba(111, 59, 157, 0.08);
+}
+
+/* ── Topo ── */
+.registro-topo {
+  margin-bottom: 28px;
+}
+
+.registro-titulo {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+}
+
+.registro-subtitulo {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+}
+
+.registro-link {
+  color: #6F3B9D;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.registro-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Campos ── */
+.registro-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.registro-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.registro-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #555;
+}
+
+.registro-input {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.15s;
+  background: #fafafa;
+}
+
+.registro-input:focus {
+  border-color: #6F3B9D;
+  background: #fff;
+}
+
+.registro-input::placeholder {
+  color: #bbb;
+}
+
+/* ── Erro ── */
+.registro-erro {
+  color: #c0392b;
+  font-size: 12px;
+  margin: -8px 0 12px;
+  padding: 8px 12px;
+  background: #fdf0ef;
+  border-radius: 8px;
+  border: 1px solid #f0b0a0;
+}
+
+/* ── Botão ── */
+.registro-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #6F3B9D;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  margin-bottom: 16px;
+}
+
+.registro-btn:hover:not(:disabled) {
+  background: #5a2f85;
+}
+
+.registro-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.registro-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ── Info ── */
+.registro-info {
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.registro-info strong {
+  color: #6F3B9D;
+}

@@ -8,6 +8,7 @@ import Dashboard from './dashboard/dashboard'
 import PageTransition from './transicao-de-paginas.jsx/transicao'
 import EsqueciSenha from './esqueci-senha/esqueci-senha'
 import CadastrarEscola from './cadastrar-escola/cadastrar-escola'
+import Registro from './registro/registro'
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -20,6 +21,7 @@ function AnimatedRoutes() {
         <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
         <Route path="/esqueci-senha" element={<PageTransition><EsqueciSenha /></PageTransition>} />
         <Route path="/cadastrar-escola" element={<PageTransition><CadastrarEscola /></PageTransition>} />
+        <Route path='/registro' element={<PageTransition><Registro /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   );

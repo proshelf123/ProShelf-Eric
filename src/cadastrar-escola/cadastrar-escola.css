@@ -152,9 +152,9 @@ body, html {
     text-decoration: none;
 }
 
-.btn-entrar {
+.btn-cadastrar {
     width: 30%;
-    padding: 10px 20px;
+    padding: 25px 20px;
     background-color: #6F3B9D;
     color: white;
     border: none;
@@ -171,11 +171,11 @@ body, html {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn-entrar:hover {
+.btn-cadastrar:hover {
     transform: scale(1.06);
 }
 
-.btn-entrar::before {
+.btn-cadastrar::before {
     content: '';
     position: absolute;
     top: 0;
@@ -187,7 +187,7 @@ body, html {
     animation: shimmer 2.2s ease-in-out infinite;
 }
 
-.btn-entrar .arrow {
+.btn-cadastrar .arrow {
     display: inline-block;
     opacity: 0;
     transform: translateX(-6px);

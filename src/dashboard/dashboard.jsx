@@ -3,7 +3,7 @@
 import './dashboard.css'
 import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useNavigate } from 'react-router'
+import { useNavigate, Link } from 'react-router'
 import { signOut, onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 import { buscarPerfil } from '../firebase/estrutura'
@@ -222,7 +222,7 @@ function Dashboard() {
           />
         )}
       </AnimatePresence>
-
+      
     </div>
   )
 }
