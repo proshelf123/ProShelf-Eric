@@ -114,7 +114,7 @@ function Dashboard() {
           onClick={() => setSecaoAtiva('Início')}
           title='Ir para Início'
         >
-          <img src={Logo} id='logo' alt='ProShelf' />
+          <House size={40}/>
         </div>
 
         <nav>

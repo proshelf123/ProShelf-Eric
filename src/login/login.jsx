@@ -64,7 +64,7 @@ function Login() {
                     ))}
                 </div>
 
-                <div className='lado-branco'>
+                <div className='lado-branco' onKeyDown={(e) => e.key === 'Enter' && handleLogin()}>
                     <img src={LogoIcone} className='logo-login' alt="Logo" />
                     <h2 id='acessar'>Acessar a plataforma</h2>
 
@@ -78,7 +78,7 @@ function Login() {
                         />
                     </div>
 
-                    <div className='campo'>
+                    <div className='campo' onKeyDown={(e) => e.key === 'Enter' && handleLogin()}>
                         <label>Senha</label>
                         <input 
                             type="password" 
@@ -90,7 +90,7 @@ function Login() {
 
                     <Link to="/esqueci-senha" style={{textDecoration:"none", userSelect:"none"}} className='esqueci'>Esqueci minha senha</Link>
 
-                    <button className='btn-entrar' onClick={handleLogin}>
+                    <button className='btn-entrar' onKeyDown={(e) => e.key === 'Enter' && handleLogin()} onClick={handleLogin}>
                         Entrar
                         <span className="arrow">›</span>
                     </button>
