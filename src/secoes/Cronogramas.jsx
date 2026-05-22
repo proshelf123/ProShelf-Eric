@@ -109,7 +109,7 @@ export default function Cronogramas({ uid, professor }) {
     <>
       {/* Cronograma */}
       <div className='card'>
-        <div className='card-titulo'>📅 Cronograma semanal</div>
+        <div className='card-titulo'> Cronograma semanal</div>
 
         {loading ? (
           <p className='secao-vazia'>Carregando seu horário...</p>

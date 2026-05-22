@@ -165,7 +165,7 @@ export default function Calendario({ uid }) {
       {/* Eventos do mês */}
       <div className='card'>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-          <div className='card-titulo' style={{ marginBottom: 0 }}>🗓️ Eventos — {MESES[mes]}</div>
+          <div className='card-titulo' style={{ marginBottom: 0 }}> Eventos — {MESES[mes]}</div>
           <button className='btn-upload' style={{ marginTop: 0 }} onClick={() => abrirModal()}>
             + Novo evento
           </button>

@@ -103,34 +103,36 @@
 .cal-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
+  gap: 12px;
   margin-bottom: 12px;
 }
 
 /* Labels dos dias da semana */
 .cal-dia-label {
-  font-size: 10px;
+  font-size: 13px;
   color: var(--texto-sec);
   text-align: center;
-  padding: 4px 0;
   font-weight: 500;
 }
 
-/* Célula de cada dia — quadrada e centralizada */
+/* Célula de cada dia — retângulo com número no canto superior direito */
 .cal-dia {
-  aspect-ratio: 1 / 1;          /* força célula quadrada */
+  aspect-ratio: 2 / 1.2;        /* retângulo maior */
+  width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding: 12px 16px;
   font-size: 12px;
-  border-radius: 50%;            /* círculo perfeito */
+  border-radius: 10px;
   cursor: pointer;
   transition: background .15s;
   position: relative;
-  line-height: 1;
+  line-height: 2;
   user-select: none;
+  background-color: #F1EDF4;
 }
-.cal-dia:hover:not(:empty) { background: var(--roxo-claro); }
+.cal-dia:hover:not(:empty) { background: #B199C7; }
 
 /* Dia atual */
 .cal-dia.hoje {
@@ -139,12 +141,6 @@
   font-weight: 600;
 }
 
-/* Dia selecionado */
-.cal-dia.selecionado {
-  background: #6F3B9D;
-  color: #fff;
-  font-weight: 700;
-}
 
 /* Ponto laranja embaixo dos dias com evento */
 .cal-dia.tem-evento::after {

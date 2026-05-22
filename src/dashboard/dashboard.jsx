@@ -15,6 +15,7 @@ import Turmas from '../secoes/Turmas'
 import Arquivos from '../secoes/Arquivos'
 import Calendario from '../secoes/Calendario'
 import Perfil from '../perfil/Perfil'
+import { House } from 'lucide-react';
 
 // ── Importações exclusivas do coordenador ──
 import UploadCronograma from '../coordenador/UploadCronograma'

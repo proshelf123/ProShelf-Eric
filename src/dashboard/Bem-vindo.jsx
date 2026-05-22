@@ -68,9 +68,7 @@ function MiniCalendario({ eventos = [] }) {
   return (
     <div className='bv-calendario'>
       <div className='bv-cal-header'>
-        <button className='bv-cal-nav' onClick={() => navMes(-1)}>‹</button>
         <span className='bv-cal-titulo'>{MESES[mes]} {ano}</span>
-        <button className='bv-cal-nav' onClick={() => navMes(1)}>›</button>
       </div>
 
       <div className='bv-cal-grid-header'>
@@ -201,7 +199,6 @@ export default function Bemvindo({
       >
         <div className='bv-header-texto'>
           <h1 className='bv-saudacao'>
-            {eCoordenador ? '👑 ' : ''}
             {saudacao(nome)}
           </h1>
           <p className='bv-subtitulo'>
@@ -269,22 +266,8 @@ export default function Bemvindo({
                 <CalendarDays size={15} />
                 <h2>Calendário</h2>
               </div>
-              <button className='bv-link' onClick={onIrCalendario}>
-                Abrir <ChevronRight size={13} />
-              </button>
             </div>
             <MiniCalendario eventos={eventos} />
-          </div>
-
-          {/* Próximos eventos */}
-          <div className='bv-card-aside'>
-            <div className='bv-secao-header'>
-              <div className='bv-secao-titulo'>
-                <Clock size={15} />
-                <h2>Próximos eventos</h2>
-              </div>
-            </div>
-            <ProximosEventos eventos={eventos} />
           </div>
 
         </aside>
