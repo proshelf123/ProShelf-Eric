@@ -120,7 +120,7 @@ export default function Turmas({ uid }) {
       <div className='perfil-grupo' style={{ position: 'relative' }}>
         <label className='perfil-label'>{label}</label>
         <button
-          className='dropdown-trigger'
+          className={`dropdown-trigger ${dropdownAberto === id ? 'aberto' : ''}`}
           onClick={() => setDropdownAberto(dropdownAberto === id ? null : id)}
           style={{
             background: 'white',
@@ -142,7 +142,7 @@ export default function Turmas({ uid }) {
           onMouseLeave={(e) => e.target.style.borderColor = 'var(--borda)'}
         >
           <span>{valor}</span>
-          <span style={{ fontSize: '16px', color: 'var(--roxo)' }}>▼</span>
+          <span className='arrow' style={{ fontSize: '16px', color: 'var(--roxo)' }}>▼</span>
         </button>
         {dropdownAberto === id && (
           <div 
@@ -163,6 +163,16 @@ export default function Turmas({ uid }) {
                 onClick={() => {
                   onChange(opt)
                   setDropdownAberto(null)
+                }}
+                onMouseEnter={(e) => {
+                  if (valor !== opt) {
+                    e.target.style.backgroundColor = '#F1EDF4'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (valor !== opt) {
+                    e.target.style.backgroundColor = 'white'
+                  }
                 }}
                 style={{
                   background: valor === opt ? 'var(--roxo)' : 'white',
@@ -234,7 +244,7 @@ export default function Turmas({ uid }) {
         {/* Modal novo registro */}
         {modalRegistro && (
           <div className='modal-overlay' onClick={() => setModalRegistro(false)}>
-            <div className='modal' onClick={e => e.stopPropagation()}>
+            <div className={`modal ${dropdownAberto ? 'dropdown-aberto' : ''}`} onClick={e => e.stopPropagation()}>
               <h3 className='modal-titulo'>Novo registro de aula</h3>
               <p style={{ fontSize: 12, color: '#888', marginBottom: 12 }}>
                 {turmaAberta.disciplina} · {turmaAberta.nome}
@@ -366,7 +376,7 @@ export default function Turmas({ uid }) {
       {/* Modal nova turma */}
       {modalTurma && (
         <div className='modal-overlay' onClick={() => setModalTurma(false)}>
-          <div className='modal' onClick={e => e.stopPropagation()}>
+          <div className={`modal ${dropdownAberto ? 'dropdown-aberto' : ''}`} onClick={e => e.stopPropagation()}>
             <h3 className='modal-titulo'>Nova turma</h3>
 
             <div className='perfil-grupo'>

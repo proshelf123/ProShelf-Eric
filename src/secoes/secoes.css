@@ -293,6 +293,14 @@ select.perfil-input option:checked {
   box-shadow: 0 0 0 3px rgba(111, 59, 157, 0.1);
 }
 
+.dropdown-trigger .arrow {
+  transition: transform .3s ease;
+}
+
+.dropdown-trigger.aberto .arrow {
+  transform: rotate(180deg);
+}
+
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -339,7 +347,7 @@ select.perfil-input option:checked {
 }
 
 .dropdown-item:hover {
-  background: var(--roxo-claro);
+  background-color: #F1EDF4;
 }
 
 .dropdown-item:last-child {
