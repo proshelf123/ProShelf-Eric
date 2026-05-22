@@ -134,7 +134,6 @@ export default function Turmas({ uid }) {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            transition: 'all .15s',
             width: '100%',
             zIndex: 10,
           }}
@@ -244,7 +243,7 @@ export default function Turmas({ uid }) {
         {/* Modal novo registro */}
         {modalRegistro && (
           <div className='modal-overlay' onClick={() => setModalRegistro(false)}>
-            <div className={`modal ${dropdownAberto ? 'dropdown-aberto' : ''}`} onClick={e => e.stopPropagation()}>
+            <div className='modal' onClick={e => e.stopPropagation()}>
               <h3 className='modal-titulo'>Novo registro de aula</h3>
               <p style={{ fontSize: 12, color: '#888', marginBottom: 12 }}>
                 {turmaAberta.disciplina} · {turmaAberta.nome}
@@ -376,7 +375,7 @@ export default function Turmas({ uid }) {
       {/* Modal nova turma */}
       {modalTurma && (
         <div className='modal-overlay' onClick={() => setModalTurma(false)}>
-          <div className={`modal ${dropdownAberto ? 'dropdown-aberto' : ''}`} onClick={e => e.stopPropagation()}>
+          <div className='modal' onClick={e => e.stopPropagation()}>
             <h3 className='modal-titulo'>Nova turma</h3>
 
             <div className='perfil-grupo'>

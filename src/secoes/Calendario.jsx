@@ -27,6 +27,7 @@ export default function Calendario({ uid }) {
   const [form, setForm] = useState(FORM_INICIAL)
   const [erro, setErro] = useState('')
   const [diaSelecionado, setDiaSelecionado] = useState(null)
+  const [dropdownAberto, setDropdownAberto] = useState(null)
 
   useEffect(() => {
     if (!uid) return
@@ -92,6 +93,80 @@ export default function Calendario({ uid }) {
     if (!window.confirm('Remover este evento?')) return
     await deletarEvento(uid, id)
     setEventos(prev => prev.filter(e => e.id !== id))
+  }
+
+  // ── Dropdown customizado ──
+  function DropdownCustomizado({ label, opcoes, valor, onChange, id }) {
+    return (
+      <div className='perfil-grupo' style={{ position: 'relative' }}>
+        <label className='perfil-label'>{label}</label>
+        <button
+          className={`dropdown-trigger ${dropdownAberto === id ? 'aberto' : ''}`}
+          onClick={() => setDropdownAberto(dropdownAberto === id ? null : id)}
+          style={{
+            background: 'white',
+            border: '1px solid var(--borda)',
+            borderRadius: '8px',
+            padding: '9px 12px',
+            fontSize: '13px',
+            fontFamily: "'Poppins', sans-serif",
+            color: 'var(--texto)',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%',
+            zIndex: 10,
+          }}
+          onMouseEnter={(e) => e.target.style.borderColor = 'var(--roxo)'}
+          onMouseLeave={(e) => e.target.style.borderColor = 'var(--borda)'}
+        >
+          <span>{valor}</span>
+          <span className='arrow' style={{ fontSize: '16px', color: 'var(--roxo)' }}>▼</span>
+        </button>
+        {dropdownAberto === id && (
+          <div 
+            className='dropdown-menu'
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              right: 0,
+              marginTop: '4px',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {opcoes.map((opt) => (
+              <button
+                key={opt}
+                className='dropdown-item'
+                onClick={() => {
+                  onChange(opt)
+                  setDropdownAberto(null)
+                }}
+                onMouseEnter={(e) => {
+                  if (valor !== opt) {
+                    e.target.style.backgroundColor = '#F1EDF4'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (valor !== opt) {
+                    e.target.style.backgroundColor = 'white'
+                  }
+                }}
+                style={{
+                  background: valor === opt ? 'var(--roxo)' : 'white',
+                  color: valor === opt ? 'white' : 'var(--texto)',
+                }}
+              >
+                {valor === opt && <span style={{ marginRight: '8px' }}>✓</span>}
+                {opt}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    )
   }
 
   const total = diasDoMes(mes, ano)
@@ -165,7 +240,7 @@ export default function Calendario({ uid }) {
       {/* Eventos do mês */}
       <div className='card'>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-          <div className='card-titulo' style={{ marginBottom: 0 }}> Eventos — {MESES[mes]}</div>
+          <div className='card-titulo' style={{ marginBottom: 0 }}>🗓️ Eventos — {MESES[mes]}</div>
           <button className='btn-upload' style={{ marginTop: 0 }} onClick={() => abrirModal()}>
             + Novo evento
           </button>
@@ -219,12 +294,16 @@ export default function Calendario({ uid }) {
               </div>
               <div className='perfil-grupo'>
                 <label className='perfil-label'>Tipo</label>
-                <select className='perfil-input' value={form.tipo}
-                  onChange={e => setForm({...form, tipo: e.target.value})}>
-                  {Object.entries(COR_TIPO).map(([k, v]) => (
-                    <option key={k} value={k}>{v.label}</option>
-                  ))}
-                </select>
+                <DropdownCustomizado
+                  label=''
+                  opcoes={Object.values(COR_TIPO).map(v => v.label)}
+                  valor={COR_TIPO[form.tipo].label}
+                  onChange={(opt) => {
+                    const tipoKey = Object.entries(COR_TIPO).find(([, v]) => v.label === opt)?.[0]
+                    setForm({ ...form, tipo: tipoKey })
+                  }}
+                  id='tipo-evento'
+                />
               </div>
             </div>
 
